@@ -1,0 +1,15 @@
+name: lecroy_control
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pyvisa
+  - pyvisa-py
+  - numpy
+  - matplotlib
+  - pytest
+  - pip
+  - pip:
+    - pyvisa-py  # Only if not available via conda
+    - docopt
+    - pyyaml
