@@ -35,7 +35,16 @@ class LeCroyScope:
             logger.error("Oscilloscope is not connected.")
             return None
 
-        measurement = self.scope.query(f"{channel}:MEAS1:{measurement_type}?")
+        measurement = self.scope.query(f"{channel}:PAVA? :{measurement_type}?")
+        return measurement
+
+    def acquire_measurement2(self, channel, measurement_type):
+        """Acquire a measurement of the given type from the given channel."""
+        if self.scope is None:
+            logger.error("Oscilloscope is not connected.")
+            return None
+
+        measurement = self.scope.query(f"{channel}:parameter:{measurement_type}?")
         return measurement
 
     def disconnect(self):
