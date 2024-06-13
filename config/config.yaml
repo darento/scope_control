@@ -1,2 +1,5 @@
 oscilloscope:
-  ip: '192.168.1.100'
+  ip: "192.168.1.103"
+  measurements: 10
+  channels: ["C1","C2","C3","C4"]
+  type: "MAX"
