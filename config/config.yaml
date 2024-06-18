@@ -4,5 +4,5 @@ oscilloscope:
   type: "MAX"
 
 measurement:
-  num_meas: 10
+  num_meas: 10000
   file_name: "data.pickle"

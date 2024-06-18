@@ -10,15 +10,11 @@ Options:
     -h --help     Show this screen.    
 """
 
-import time
-
-from matplotlib import pyplot as plt
-import numpy as np
-from src.lecroy import LeCroyScope
 import yaml
 from docopt import docopt
 from tqdm import tqdm
 
+from src.lecroy import LeCroyScope
 from src.measurement import Measurement, MeasurementIO
 
 

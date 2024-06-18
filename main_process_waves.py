@@ -10,21 +10,13 @@ Options:
     -h --help     Show this screen.    
 """
 
-import time
 
 from matplotlib import pyplot as plt
 import numpy as np
-from src.lecroy import LeCroyScope
 import yaml
 from docopt import docopt
 
-from src.measurement import Measurement, MeasurementIO
-
-
-def write_header(file, header_dict):
-    """Write the header information into the file."""
-    with open(file, "wb") as file:
-        pass
+from src.measurement import MeasurementIO
 
 
 def main():
