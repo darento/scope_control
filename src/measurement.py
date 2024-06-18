@@ -23,7 +23,9 @@ class Measurement:
         Add waveform data to the measurement data dictionary.
         """
         for channel, waveform in waveforms.items():
-            self.meas_data[channel] = waveform
+            if channel not in self.meas_data:
+                self.meas_data[channel] = []
+            self.meas_data[channel].append(waveform)
 
 
 class MeasurementIO:
@@ -38,15 +40,12 @@ class MeasurementIO:
             )
 
     @staticmethod
-    def read(file_name: str) -> Measurement:
+    def read(file_name: str) -> tuple[Dict[str, Any], Dict[str, Any]]:
         """
         Read data from a file and return a Measurement object.
         """
         with open(file_name, "rb") as file:
             content = pickle.load(file)
-            measurement = Measurement(
-                num_meas=len(content["data"]), file_name=file_name
-            )
-            measurement.header = content["header"]
-            measurement.meas_data = content["data"]
-            return measurement
+            header_dict = content["header"]
+            meas_data_dict = content["data"]
+            return header_dict, meas_data_dict

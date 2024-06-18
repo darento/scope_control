@@ -18,7 +18,7 @@ class LeCroyScope:
         self.rm = pyvisa.ResourceManager()
         self.scope = None
 
-    def _acquire_waveform(self, channel: str) -> np.ndarray:
+    def _acquire_waveform_scope(self, channel: str) -> np.ndarray:
         """Acquire a waveform from the given channel."""
         # Set the channel and query the waveform
         self.scope.write(f"{channel}:INSPECT? 'SIMPLE'")
@@ -51,9 +51,21 @@ class LeCroyScope:
         self.scope.write("TRMD SINGLE")
         waveforms = {}
         for channel in channels:
-            waveforms[channel] = self._acquire_waveform(channel)
+            waveforms[channel] = self._acquire_waveform_scope(channel)
 
         return waveforms
+
+    def set_trigger_mode(self, mode: str) -> None:
+        """Set the trigger mode of the oscilloscope."""
+        if self.scope is None:
+            logger.error("Oscilloscope is not connected.")
+            return None
+
+        if mode not in ["AUTO", "NORM", "SINGLE"]:
+            logger.error("Invalid trigger mode.")
+            return None
+
+        self.scope.write(f"TRMD {mode}")
 
     # TODO: The method does not work as expected. Fix it.
     def acquire_measurement(self, channel: str, measurement_type: str) -> str:

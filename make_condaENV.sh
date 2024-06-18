@@ -24,6 +24,7 @@ dependencies:
     - pyvisa-py  # Only if not available via conda
     - docopt
     - pyyaml
+    - tqdm
 
 EOF
 

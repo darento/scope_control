@@ -1,5 +1,8 @@
 oscilloscope:
-  ip: "192.168.1.103"
-  measurements: 10
+  ip: "192.168.1.103"  
   channels: ["C1","C2","C3","C4"]
   type: "MAX"
+
+measurement:
+  num_meas: 10
+  file_name: "data.pickle"
