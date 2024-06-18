@@ -16,3 +16,18 @@ conda env create -f lecroy_conrol.yml
 ```bash
 source make_condaENV.sh 
 ```
+
+## Usage
+
+### Acquire
+Modify the 'config/config.yaml' file as you need and then run
+```bash
+python main_acquire.py config/config.yaml
+```
+
+### Process
+There is a basic script to process the waveforms, use it to start your analysis code. 
+It needs the 'config/config.yaml' file for the file_name at least.
+```bash
+python main_process_waves.py config/config.yaml
+```
